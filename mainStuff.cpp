@@ -78,6 +78,9 @@ int main(){
     int newenroll = stringtoint(enrolled);
     cout << "the price is $" << fixed << setprecision(2) << calculation(newprice, newenroll, required, usedornot);
     cout << "\nthe number of books needed is : " << amountofbooks(newenroll, required, usedornot);
+    
+    cout << "\npress enter to continue ..........";
+    cin.get();
     return 0;
 
 }
