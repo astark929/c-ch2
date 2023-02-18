@@ -1,8 +1,6 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
-
-
 #include  <bits/stdc++.h>
 
 #include "title.h"
@@ -19,9 +17,8 @@ int main(){
     cout << "\x1b[2J"; //clearing terminal for VS code
     //system("cls");   //if your not using VS code, pls use this code
     string ISBN;
-    std::string author, title_book;
-    double enrolled, prices_book, quant;
-    char tax, handle; //title_book[max_value];
+    std::string author, title_book, usedornot;
+    string enrolled, prices_book, required;
     std::cout << stuff << std::endl;
     cout << "\n\n\n ";
     cin.get();
@@ -37,8 +34,7 @@ int main(){
     std::cout << instructions << std::endl;
     cout << "\n";
     
-    cout << "\nenter the ISBN (barcode)" << endl;
-    cout << "\n " << endl;
+    cout << "\nenter the ISBN (barcode) :   " << endl;
     cin >> ISBN; 
 
     cout << "\nenter the title of the book\n";
@@ -46,27 +42,22 @@ int main(){
     std::getline(std::cin, title_book);
 
     cout << "\nenter the authors name" << endl;
-    cout << "\n " << endl;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    //cin.ignore(numeric_limits<streamsize>::max(), '\n');
     std::getline(std::cin, author);
     
     cout << "\nenter the number of students in your class" << endl;
-    cout << "\n " << endl;
     cin >> enrolled;
 
     cout << "\nenter the prices of the book" << endl;
-    cout << "\n " << endl;
     cin >> prices_book;
 
-    cout << "\nenter y if the book is taxable, n for it is not" << endl;
-    cout << "\n " << endl;
-    cin >> tax;
+    cout << "\nenter 'new' if you want to book to be new, otherwise type something else" << endl;
+    cin >> usedornot;
 
-    cout << "\nenter y if your are ording online, n for it is picking it up" << endl;
-    cout << "\n " << endl;
-    cin >> handle;
+    cout << "\nenter 'required' if the book is required, otherwise type something else" << endl;
+    cin >> required;
 
-    cout << "please press any key to continue";
+    cout << "please press 'ENTER' to continue";
     cin.get();
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -75,11 +66,20 @@ int main(){
     //system("cls");   //if your not using VS code, pls use this code
     
     std::cout << title << std::endl;
-    std::cout << output_screen << std::endl;
+    std::cout << "\t\t\t" << output_screen << std::endl;
 
-    cout << "your book " << title_book << " by " << author << "with the cereal code of " << ISBN << endl;
-    cout << "the price is $" << fixed << setprecision(2) << calculation(prices_book, tax, handle);
-    cout<<"\nIT WORKS" << endl;
+    cout << "-----------------YOUR INPUTS-------------" <<endl;
+    cout << "barcode : " << ISBN << endl;
+    cout << "author : " << author << endl;
+    cout << "title : " << title_book << endl;
+    cout << "# of students : " << enrolled << endl;
+    cout << "is or is not required : " << required << endl;
+    cout << "----------------------------------------" <<endl;
+
+    double newprice = check(prices_book);
+    int newenroll = stringtoint(enrolled);
+    cout << "the price is $" << fixed << setprecision(2) << calculation(newprice, newenroll, required, usedornot);
+    cout << "\nthe number of books needed is : " << amountofbooks(newenroll, required, usedornot);
     return 0;
 
 }
