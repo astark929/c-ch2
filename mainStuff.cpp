@@ -7,8 +7,6 @@
 #include "data.h"
 #include "calc.h"
 
-#define max_value 10000
-
 using namespace std;
 
 int main(){
