@@ -31,8 +31,6 @@ int main(){
 
     std::cout << title << std::endl;
     cout << "\n";
-    std::cout << instructions << std::endl;
-    cout << "\n";
     
     cout << "\nenter the ISBN (barcode) :   " << endl;
     cin >> ISBN; 
